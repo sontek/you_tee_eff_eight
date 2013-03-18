@@ -10,7 +10,9 @@ requires = [
     'pyramid',
     'pyramid_debugtoolbar',
     'waitress',
-    ]
+    'colander',
+    'babel'
+]
 
 setup(name='you_tee_eff_eight',
       version='0.0',
@@ -35,5 +37,10 @@ setup(name='you_tee_eff_eight',
       entry_points="""\
       [paste.app_factory]
       main = you_tee_eff_eight:main
-      """,
-      )
+      """
+    , message_extractors = {'you_tee_eff_eight': [
+            ('**.py', 'python', None),
+            ('templates/**.mako', 'mako', None),
+        ]
+    },
+)
